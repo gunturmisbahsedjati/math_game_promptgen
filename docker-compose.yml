@@ -1,0 +1,26 @@
+services:
+  # Service 1: Mode Development (Port 3000)
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: react_app_dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+
+  # Service 2: Mode Production (Port 8080)
+  app-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: react_app_prod
+    ports:
+      - "8080:80"
+    restart: always
