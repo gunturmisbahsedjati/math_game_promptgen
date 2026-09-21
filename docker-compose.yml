@@ -13,6 +13,7 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
+    restart: always
     tty: true
 
   # Service 2: Mode Production (Port 8080)
